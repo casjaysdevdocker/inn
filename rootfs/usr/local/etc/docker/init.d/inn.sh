@@ -76,7 +76,7 @@ DATABASE_BASE_DIR="${DATABASE_BASE_DIR:-/data/db}"
 DATABASE_DIR="${DATABASE_DIR_INN:-/data/db/sqlite}"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Set webroot
-WWW_ROOT_DIR="/usr/share/httpd/default"
+WWW_ROOT_DIR="/usr/local/share/httpd/default"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Default predefined variables
 DATA_DIR="/data/news"   # set data directory
