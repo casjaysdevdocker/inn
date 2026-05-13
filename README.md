@@ -19,17 +19,18 @@ dockermgr update inn
 ## Install and run container
   
 ```shell
-mkdir -p "$HOME/.local/share/srv/docker/inn/volumes"
+dockerHome="/var/lib/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs"
+mkdir -p "/var/lib/srv/$USER/docker/inn/rootfs"
 git clone "https://github.com/dockermgr/inn" "$HOME/.local/share/CasjaysDev/dockermgr/inn"
-cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/inn/rootfs/." "$HOME/.local/share/srv/docker/inn/volumes/"
+cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/inn/rootfs/." "$dockerHome/"
 docker run -d \
 --restart always \
 --privileged \
---name casjaysdevdocker-inn \
+--name casjaysdevdocker-inn-latest \
 --hostname inn \
 -e TZ=${TIMEZONE:-America/New_York} \
--v "$HOME/.local/share/srv/docker/casjaysdevdocker-inn/volumes/data:/data:z" \
--v "$HOME/.local/share/srv/docker/casjaysdevdocker-inn/volumes/config:/config:z" \
+-v "$dockerHome/data:/data:z" \
+-v "$dockerHome/config:/config:z" \
 -p 80:80 \
 casjaysdevdocker/inn:latest
 ```
@@ -46,8 +47,8 @@ services:
       - TZ=America/New_York
       - HOSTNAME=inn
     volumes:
-      - "$HOME/.local/share/srv/docker/casjaysdevdocker-inn/volumes/data:/data:z"
-      - "$HOME/.local/share/srv/docker/casjaysdevdocker-inn/volumes/config:/config:z"
+      - "/var/lib/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs/data:/data:z"
+      - "/var/lib/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs/config:/config:z"
     ports:
       - 80:80
     restart: always
