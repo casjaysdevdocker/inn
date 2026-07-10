@@ -19,8 +19,8 @@ dockermgr update inn
 ## Install and run container
   
 ```shell
-dockerHome="/var/lib/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs"
-mkdir -p "/var/lib/srv/$USER/docker/inn/rootfs"
+dockerHome="/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs"
+mkdir -p "/srv/$USER/docker/inn/rootfs"
 git clone "https://github.com/dockermgr/inn" "$HOME/.local/share/CasjaysDev/dockermgr/inn"
 cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/inn/rootfs/." "$dockerHome/"
 docker run -d \
@@ -47,8 +47,8 @@ services:
       - TZ=America/New_York
       - HOSTNAME=inn
     volumes:
-      - "/var/lib/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs/data:/data:z"
-      - "/var/lib/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs/config:/config:z"
+      - "/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs/data:/data:z"
+      - "/srv/$USER/docker/casjaysdevdocker/inn/inn/latest/rootfs/config:/config:z"
     ports:
       - 80:80
     restart: always
